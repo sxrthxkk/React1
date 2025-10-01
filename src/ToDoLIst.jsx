@@ -1,17 +1,20 @@
 import React, {useState} from "react";
 function ToDoList(){
-    const [tasks,setTasks] = useState(["eat","sleep"]);
+    const [tasks,setTasks] = useState([]);
     const [newTask,setNewTask] = useState("");
     function inputChange(e){
        setNewTask(e.target.value);
     }
     function addTask(){
-
+        if(newTask.trim() === "") {
+            return;
+        }
+        setTasks(t => [...t, newTask]); 
+        setNewTask("");
     }
     function deleteTask(index){
 
     }
-    
     return(<div className="to-do-list">
      <h1>To-Do-List</h1>
      <div>
